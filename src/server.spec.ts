@@ -63,8 +63,6 @@ describe('runtime', (): void => {
   it('starts the server when correct parameters are passed', async (): Promise<
     void
   > => {
-    expect.assertions(1);
-
     const { start, shutdown } = await createServer({
       specificationPath: '/open-api/specification.yaml',
     });
