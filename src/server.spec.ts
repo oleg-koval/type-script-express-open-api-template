@@ -1,9 +1,6 @@
 import { PORT } from './config';
 import { createServer } from './server';
 
-const OUT_OF_LOWER_BOUNDS_PORT = 1023;
-const OUT_OF_UPPER_BOUNDS_PORT = 65536;
-
 /*
  * Tests
  */
@@ -41,7 +38,7 @@ describe('error handling', (): void => {
     }
   });
 
-  it.each([OUT_OF_LOWER_BOUNDS_PORT, OUT_OF_UPPER_BOUNDS_PORT])(
+  it.each([65536, 99999])(
     'should throw an error when passed a port which is out of bounds: %d',
     async (port: number): Promise<void> => {
       const { start } = await createServer({
@@ -52,7 +49,7 @@ describe('error handling', (): void => {
         start(port);
       } catch (error) {
         expect(error).toMatchInlineSnapshot(
-          `[RangeError: Port should be >= 0 and < 65536. Received 65536.]`,
+          `[Error: Invalid PORT or out of bounds.]`,
         );
       }
     },

@@ -33,7 +33,8 @@ git clone git@github.com:oleg-koval/type-script-express-open-api-template.git
 ```
 
 In case you don't have a git client, you can get the latest version directly by
-using [this link](https://github.com/oleg-koval/type-script-express-open-api-template/archive/master.zip)
+using
+[this link](https://github.com/oleg-koval/type-script-express-open-api-template/archive/master.zip)
 and extracting the downloaded archive.
 
 Go the the right directory and install dependencies:
@@ -50,7 +51,6 @@ That's it! You can now go to the next step.
 All tests are being executed using Jest. All tests files live side-to-side with
 a source code and have a common suffix: .spec.ts. Some helper methods are being
 stored in the test directory.
-
 
 ```bash
 npm run test:start
@@ -90,7 +90,6 @@ npm run lint:fix
 ### Coverage
 
 [TBD]
-
 
 ## Contributing
 

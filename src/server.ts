@@ -3,7 +3,6 @@ import { Server } from 'http';
 import { join } from 'path';
 
 import { initializeSwagger } from './common/utilities/swagger';
-import { PORT_RANGE_LOWER_BOUND, PORT_RANGE_UPPER_BOUND } from './config';
 import { errorHandler } from './middleware/errorHandler';
 import { Router } from './routes';
 
@@ -11,10 +10,7 @@ import { Router } from './routes';
  * Assert that the port is a numeric value contained within bounds.
  */
 const assertValidPort = (port: number): boolean => {
-  return Number.isNaN(port) === true ||
-    (port <= PORT_RANGE_LOWER_BOUND && port >= PORT_RANGE_UPPER_BOUND)
-    ? false
-    : true;
+  return Number.isSafeInteger(port) && port >= 0 && port <= 65535;
 };
 
 export interface ExpressApp {
