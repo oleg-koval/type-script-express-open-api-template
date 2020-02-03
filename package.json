@@ -10,7 +10,7 @@
     "jest": "^25.1.0",
     "js-yaml": "^3.13.1",
     "moment": "^2.24.0",
-    "ramda": "^0.26.1",
+    "ramda": "^0.27.0",
     "source-map-support": "^0.5.16",
     "swagger-express-middleware": "^2.0.5"
   },
