@@ -1,0 +1,91 @@
+{
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0",
+    "jest": "^25.1.0",
+    "js-yaml": "^3.13.1",
+    "moment": "^2.24.0",
+    "ramda": "^0.26.1",
+    "source-map-support": "^0.5.16",
+    "swagger-express-middleware": "^2.0.5"
+  },
+  "description": "TypeScript Express OpenAPI 2.0 template",
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^25.1.1",
+    "@types/js-yaml": "^3.12.2",
+    "@types/node": "^13.7.0",
+    "@types/ramda": "^0.26.40",
+    "@types/supertest": "^2.0.8",
+    "@types/swagger-express-middleware": "^1.0.10",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "commitizen": "^4.0.3",
+    "cspell": "^4.0.46",
+    "eslint": "^6.8.0",
+    "eslint-plugin-functional": "^3.0.1",
+    "fast-check": "^1.21.0",
+    "husky": "^4.2.1",
+    "jsdoc": "^3.5.5",
+    "lint-staged": "^10.0.7",
+    "newman": "^4.5.7",
+    "nock": "^11.7.2",
+    "node-mocks-http": "^1.8.1",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.0.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "engines": {
+    "node": "12",
+    "npm": ">=6.13.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "name": "@oleg-koval/type-script-express-open-api-template",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:oleg-koval/type-script-express-open-api-template.git"
+  },
+  "scripts": {
+    "build": "run-s clean build:ts",
+    "build:ts": "tsc --project tsconfig.production.json",
+    "build:ts:watch": "tsc --project tsconfig.production.json --watch",
+    "clean": "rm -rf lib",
+    "cz": "git-cz",
+    "cz:retry": "git-cz --retry",
+    "format": "prettier --check \"**/*.{js,json,md,ts,yml,yaml}\"",
+    "format:fix": "prettier --write \"**/*.{js,json,md,ts,yml,yaml}\"",
+    "lint": "eslint \"**/*.ts\"",
+    "lint:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/eslint-plugin-functional\" \"**/*.ts\"",
+    "package:name": "echo $npm_package_name",
+    "package:version": "echo $npm_package_version",
+    "spellcheck": "cspell '**/*'",
+    "start": "node lib/index.js",
+    "start:inspect": "node --inspect=5858 --require ts-node/register ./src/index.ts",
+    "start:watch": "nodemon",
+    "test": "jest --detectOpenHandles",
+    "test:ci": "run-s build test:coverage",
+    "test:coverage": "jest --collect-coverage --runInBand --detectOpenHandles",
+    "test:e2e": "ts-node ./test/e2e",
+    "test:watch": "jest --watch --verbose false --runInBand",
+    "types": "tsc --noEmit"
+  },
+  "version": "1.0.0"
+}

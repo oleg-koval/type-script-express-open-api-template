@@ -1,0 +1,6 @@
+{
+  "ignore": ["**/*.spec.ts", ".git", "node_modules"],
+  "watch": ["src", "open-api/specification.yaml"],
+  "exec": "npm run start:inspect",
+  "ext": "ts"
+}

@@ -1,0 +1,105 @@
+swagger: '2.0'
+info:
+  title: Template
+  description: Template.
+  version: 1.0.0
+host: example.com
+schemes:
+  - http
+  - https
+produces:
+  - application/json
+paths:
+  /health:
+    options:
+      operationId: healthOptions
+      responses:
+        default:
+          description: CORS headers for all operations
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+    get:
+      security: []
+      summary: Service status
+      operationId: health
+      responses:
+        '200':
+          description: OK.
+        default:
+          description: Default error response with error object.
+          schema:
+            '$ref': '#/definitions/ApiError'
+  /sayHello:
+    options:
+      operationId: greeterOptions
+      responses:
+        default:
+          description: CORS headers for all operations
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+    get:
+      summary: Greet a user
+      operationId: sayHello
+      parameters:
+        - description: Name.
+          in: query
+          name: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            '$ref': '#/definitions/Message'
+        '404':
+          description: Data not found.
+          schema:
+            '$ref': '#/definitions/Message'
+        default:
+          description: Default error response with error object.
+          schema:
+            '$ref': '#/definitions/Error'
+definitions:
+  Error:
+    description: Default error response
+    properties:
+      error:
+        properties:
+          data:
+            items:
+              type: object
+            type: array
+          message:
+            type: string
+          name:
+            type: string
+        required:
+          - name
+          - message
+        type: object
+    required:
+      - error
+    type: object
+  ApiError:
+    description: Default API Error response
+    properties:
+      error:
+        type: string
+      error_description:
+        type: string
+      error_details:
+        items:
+          type: string
+    required:
+      - error
+      - error_description
+    type: object
+  Message:
+    properties:
+      message:
+        type: string
+    required:
+      - message
+    type: object
