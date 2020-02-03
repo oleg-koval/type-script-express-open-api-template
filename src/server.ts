@@ -8,9 +8,10 @@ import { Router } from './routes';
 
 /**
  * Assert that the port is a numeric value contained within bounds.
+ * Non-privileged user (not root) can't open a listening socket on ports below 1024.
  */
 const assertValidPort = (port: number): boolean => {
-  return Number.isSafeInteger(port) && port >= 0 && port <= 65535;
+  return Number.isSafeInteger(port) && port >= 1024 && port <= 65535;
 };
 
 export interface ExpressApp {
