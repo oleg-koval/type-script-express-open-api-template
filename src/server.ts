@@ -12,8 +12,7 @@ import { Router } from './routes';
  */
 const assertValidPort = (port: number): boolean => {
   return Number.isNaN(port) === true ||
-    port <= PORT_RANGE_LOWER_BOUND &&
-    port >= PORT_RANGE_UPPER_BOUND
+    (port <= PORT_RANGE_LOWER_BOUND && port >= PORT_RANGE_UPPER_BOUND)
     ? false
     : true;
 };
