@@ -1,4 +1,4 @@
 /**
  * Response transformers collection.
  */
-export const formatter = (): unknown => undefined;
+export const formatter = (args: {}): unknown => args;

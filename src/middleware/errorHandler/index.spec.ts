@@ -38,7 +38,11 @@ describe('error handler', (): void => {
       error_description: 'message',
     });
     expect(nextMock).toHaveBeenCalledTimes(1);
-    expect(nextMock).toHaveBeenCalledWith();
+    expect(nextMock).toHaveBeenCalledWith({
+      message: 'message',
+      name: 'name',
+      status: 200,
+    });
   });
 
   it('responds with server error', (): void => {

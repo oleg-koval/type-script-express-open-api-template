@@ -1,4 +1,4 @@
 /**
  * Queries collection.
  */
-export const query = (): undefined => undefined;
+export const query = (args: {}): unknown => args;
