@@ -1,3 +1,5 @@
+# cSpell:ignore ridedott
+
 name: Continuous Integration
 
 on: push
@@ -137,7 +139,7 @@ jobs:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
       - name: Types
         run: npm run types
-  docker-image:
+  build-docker-image:
     name: Build Docker image
     runs-on: ubuntu-latest
     steps:
@@ -147,3 +149,18 @@ jobs:
           persist-credentials: false
       - name: Build
         run: docker build .
+  merge-me:
+    name: Merge me!
+    runs-on: ubuntu-latest
+    needs:
+      - build-docker-image
+      - format
+      - lint
+      - spellcheck
+      - test
+      - types
+    steps:
+      - name: Merge me!
+        uses: ridedott/merge-me-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
