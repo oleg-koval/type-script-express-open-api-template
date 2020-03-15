@@ -12,7 +12,7 @@
     "moment": "^2.24.0",
     "ramda": "^0.27.0",
     "source-map-support": "^0.5.16",
-    "swagger-express-middleware": "^3.0.0"
+    "swagger-express-middleware": "^3.0.1"
   },
   "description": "TypeScript Express OpenAPI 2.0 template",
   "devDependencies": {
