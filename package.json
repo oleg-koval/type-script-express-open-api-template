@@ -34,7 +34,7 @@
     "fast-check": "^1.24.2",
     "husky": "^4.2.5",
     "jsdoc": "^3.6.4",
-    "lint-staged": "^10.2.7",
+    "lint-staged": "^10.2.8",
     "newman": "^5.0.1",
     "nock": "^12.0.3",
     "node-mocks-http": "^1.8.1",
