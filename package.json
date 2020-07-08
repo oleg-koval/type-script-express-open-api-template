@@ -35,7 +35,7 @@
     "husky": "^4.2.5",
     "jsdoc": "^3.6.4",
     "lint-staged": "^10.2.11",
-    "newman": "^5.1.0",
+    "newman": "^5.1.1",
     "nock": "^13.0.2",
     "node-mocks-http": "^1.8.1",
     "nodemon": "^2.0.4",
