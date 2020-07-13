@@ -17,7 +17,7 @@
   "description": "TypeScript Express OpenAPI 2.0 template",
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@types/express": "^4.17.4",
     "@types/jest": "^26.0.4",
     "@types/js-yaml": "^3.12.5",
