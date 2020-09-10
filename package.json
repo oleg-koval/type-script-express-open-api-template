@@ -31,7 +31,7 @@
     "cspell": "^4.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-functional": "^3.0.2",
-    "fast-check": "^2.2.1",
+    "fast-check": "^2.3.0",
     "husky": "^4.3.0",
     "jsdoc": "^3.6.5",
     "lint-staged": "^10.3.0",
