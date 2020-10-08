@@ -30,7 +30,7 @@
     "commitizen": "^4.2.1",
     "cspell": "^4.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-functional": "^3.0.2",
+    "eslint-plugin-functional": "^3.1.0",
     "fast-check": "^2.4.0",
     "husky": "^4.3.0",
     "jsdoc": "^3.6.6",
