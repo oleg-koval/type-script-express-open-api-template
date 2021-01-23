@@ -28,7 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "commitizen": "^4.2.3",
-    "cspell": "^5.2.0",
+    "cspell": "^5.2.1",
     "eslint": "^6.8.0",
     "eslint-plugin-functional": "^3.2.1",
     "fast-check": "^2.12.0",
