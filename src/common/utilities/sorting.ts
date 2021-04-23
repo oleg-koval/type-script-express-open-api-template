@@ -1,11 +1,11 @@
 /**
  * Sorts array of numbers descending.
  */
-export const sortDescending = (array: number[]): number[] =>
-  array.sort((left: number, right: number): number => right - left);
+export const sortAscending = (array: readonly number[]): readonly number[] =>
+  array.concat().sort();
 
 /**
  * * Sorts array of numbers ascending.
  */
-export const sortAscending = (array: number[]): number[] =>
-  array.sort((left: number, right: number): number => left - right);
+export const sortDescending = (array: readonly number[]): readonly number[] =>
+  [...sortAscending(array)].reverse();

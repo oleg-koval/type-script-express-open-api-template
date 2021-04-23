@@ -11,7 +11,14 @@ const Router = router({
   caseSensitive: true,
 });
 
-Router.get(PathsMapping.health, healthController);
-Router.get(PathsMapping.greeter, validateGreeterRequest, greeterController);
+export const assignedHealthController = Router.get(
+  PathsMapping.health,
+  healthController,
+);
+export const assignedGreeterController = Router.get(
+  PathsMapping.greeter,
+  validateGreeterRequest,
+  greeterController,
+);
 
 export { Router };

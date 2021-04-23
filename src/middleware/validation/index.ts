@@ -13,25 +13,25 @@ export const validateGreeterRequest = (
   request: Request,
   response: Response,
   next: NextFunction,
-): void => {
+): undefined => {
   const {
     name,
   }: {
-    name: string;
+    readonly name: string;
   } = request.query;
 
-  if (isKnownName(name) === false) {
-    response
-      .status(BAD_REQUEST)
-      .json(
-        makeErrorMessage(
-          getStatusText(BAD_REQUEST),
-          'Value of "name" parameter should be one of known names.',
-        ),
-      );
+  isKnownName(name) === false // eslint-disable-line functional/no-expression-statement
+    ? response
+        .status(BAD_REQUEST)
+        .json(
+          makeErrorMessage(
+            getStatusText(BAD_REQUEST),
+            'Value of "name" parameter should be one of known names.',
+          ),
+        )
+    : undefined;
 
-    return;
-  }
+  next(); // eslint-disable-line functional/no-expression-statement
 
-  next();
+  return undefined;
 };

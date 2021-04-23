@@ -2,14 +2,12 @@ import { PORT } from './config';
 import { logError } from './logging';
 import { createServer, ExpressApp } from './server';
 
-createServer({
+export const createdServer = createServer({
   specificationPath: '/open-api/specification.yaml',
 })
-  .then((server: ExpressApp): void => {
-    server.start(PORT);
-  })
-  .catch((error: Error): void => {
-    logError(error);
+  .then((server: ExpressApp): unknown => server.start(PORT))
+  .catch((error: Error): unknown => {
+    const errorLog = logError(error);
 
-    throw error;
+    return errorLog;
   });

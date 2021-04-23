@@ -1,4 +1,4 @@
 /**
  * Creates, instantiates data store client.
  */
-export const client = (): unknown => undefined;
+export const client = (args: {}): unknown => args;

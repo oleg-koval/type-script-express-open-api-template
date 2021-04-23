@@ -1,8 +1,21 @@
+# Living in a perfect world in which all our functions are pure would be nice,
+# but as you can tell from the list above, any meaningful program will contain impure functions.
+# Most of the time we will need to make an Ajax call, check the current date, or get a random number.
+# A good rule of thumb is to follow the 80/20 rule: 80% of your functions should be pure,
+# and the remaining 20%, of necessity, will be impure.
+# There are several benefits to pure functions:
+# They're easier to reason about and debug because they don't depend on mutable state.
+# The return value can be cached or "memoized" to avoid recomputing it in the future.
+# They're easier to test because there are no dependencies (such as logging,
+# Ajax, database, etc.) that need to be mocked.
+# https://opensource.com/article/17/6/functional-javascript
+
 env:
   es6: true
   node: true
 plugins:
   - '@typescript-eslint'
+  - functional
 overrides:
   - env:
       jest: true
@@ -11,6 +24,9 @@ overrides:
       - src/**/*.spec.ts
       - test/**/*.ts
     rules:
+      'functional/no-return-void': off
+      'functional/functional-parameters': off
+      'functional/no-expression-statement': off
       '@typescript-eslint/no-magic-numbers': off
       '@typescript-eslint/typedef': warn
       'max-lines': 0
@@ -20,6 +36,13 @@ parserOptions:
   ecmaVersion: 10
   project: tsconfig.json
   sourceType: module
+extends:
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+  - 'plugin:functional/external-recommended'
+  - 'plugin:functional/recommended'
 rules:
   '@typescript-eslint/camelcase': off
   '@typescript-eslint/restrict-template-expressions': off

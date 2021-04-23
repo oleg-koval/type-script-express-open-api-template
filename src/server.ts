@@ -1,3 +1,4 @@
+import { logError } from './logging/index';
 import * as express from 'express';
 import { Server } from 'http';
 import { join } from 'path';
@@ -14,17 +15,17 @@ const assertValidPort = (port: number): boolean => {
   return Number.isSafeInteger(port) && port >= 1024 && port <= 65535;
 };
 
-export interface ExpressApp {
+export type ExpressApp = {
   readonly expressApp: express.Express;
-  readonly shutdown: (server: Server) => Server;
-  readonly start: (port: number) => Server;
-}
+  readonly shutdown: (server: Server) => Server; // eslint-disable-line functional/no-mixed-type
+  readonly start: (port: number) => Server | null;
+};
 
 /**
  * Creates the server.
  */
 export const createServer = async (options: {
-  specificationPath: string;
+  readonly specificationPath: string;
 }): Promise<ExpressApp> => {
   const expressApp = express();
 
@@ -33,25 +34,26 @@ export const createServer = async (options: {
     join(process.cwd(), options.specificationPath),
   );
 
-  expressApp.use(swagger.metadata());
-  expressApp.use(swagger.CORS());
-  expressApp.use(swagger.parseRequest());
-  expressApp.use(swagger.validateRequest());
+  const middleware = [
+    swagger.metadata(),
+    swagger.CORS(),
+    swagger.parseRequest(),
+    swagger.validateRequest(),
+    Router,
+    errorHandler,
+  ];
 
-  expressApp.use(Router);
-  expressApp.use(errorHandler);
+  middleware.forEach(middleware => expressApp.use(middleware)); // eslint-disable-line functional/no-expression-statement
 
   return {
     expressApp,
     shutdown: (server: Server): Server => {
       return server.close();
     },
-    start: (port: number): Server => {
-      if (assertValidPort(port) === false) {
-        throw new Error('Invalid PORT or out of bounds.');
-      }
-
-      return expressApp.listen(port);
+    start: (port: number): Server | null => {
+      return assertValidPort(port) === false // eslint-disable-line functional/no-expression-statement
+        ? logError('Invalid PORT or out of bounds.')
+        : expressApp.listen(port);
     },
   };
 };

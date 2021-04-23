@@ -1,6 +1,6 @@
 import { sortAscending, sortDescending } from './sorting';
 describe('sort array descending', (): void => {
-  describe('error handling', (): void => {});
+  describe('error handling', (): void => {}); // eslint-disable-line @typescript-eslint/no-empty-function
 
   describe('data persistance', (): void => {
     it('sorts an array in descending order', (): void => {
@@ -25,7 +25,7 @@ describe('sort array descending', (): void => {
 });
 
 describe('sort array ascending', (): void => {
-  describe('error handling', (): void => {});
+  describe('error handling', (): void => {}); // eslint-disable-line @typescript-eslint/no-empty-function
 
   describe('data persistance', (): void => {
     it('sorts an array in ascending order', (): void => {

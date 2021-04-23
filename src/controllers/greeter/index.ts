@@ -1,18 +1,17 @@
 import { Request, Response } from 'express';
 import { OK } from 'http-status-codes';
 
-interface IQueryParameters {
-  name: string;
-}
+type IQueryParameters = {
+  readonly name: string;
+};
 
-export const greeter = async (
-  request: Request,
-  response: Response,
-): Promise<void> => {
+export const greeter = (request: Request, response: Response): unknown => {
   const { query } = request;
   const queryParameters: IQueryParameters = query;
 
-  response.status(OK).json({
+  const responded = response.status(OK).json({
     message: `Hello, ${queryParameters.name}`,
   });
+
+  return responded;
 };
